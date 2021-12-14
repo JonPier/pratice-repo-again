@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @resume.firstname %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @resume.lastname %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @resume.role %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @resume.location %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @resume.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @resume.phone %>
+</p>
+
+
+<%= form_for([@resume, @resume.skills.build]) do |f| %>
+  <p>
+    <%= f.label :skill_title %><br>
+    <%= f.text_field :skill_title %>
+  </p>
+  <p>
+    <%= f.label :skill_level %><br>
+    <%= f.text_field :skill_level %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<h2>Skills</h2>
+<% @resume.skills.each do |skill| %>
+  <p>
+    <strong>Skill:</strong>
+    <%= skill.skill_title %>
+  </p>
+ 
+  <p>
+    <strong>Skill Level:</strong>
+    <%= skill.skill_level %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_resume_path(@resume) %> |
+<%= link_to 'Back', resumes_path %>
